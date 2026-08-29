@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday, Sindhu</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="sparkles"></canvas>
+<canvas id="fireworks"></canvas>
+<div class="glow-bg"></div>
+
+<div id="progressDots">
+  <span class="pdot"></span><span class="pdot"></span><span class="pdot"></span><span class="pdot"></span>
+</div>
+
+<div class="page">
+  <div class="wrap">
+    <div class="frame reveal">
+      <svg class="emblem" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="42" fill="none" stroke="#d4af37" stroke-width="2.5"/>
+        <circle cx="50" cy="50" r="32" fill="none" stroke="#ffe08a" stroke-width="1"/>
+        <polygon points="50,22 58,44 82,44 62,58 70,80 50,66 30,80 38,58 18,44 42,44" fill="#d4af37"/>
+      </svg>
+      <p class="eyebrow">Today Is Your Day</p>
+      <h1 class="title" id="bdayTitle">Happy Birthday, Sindhu</h1>
+
+      <div class="photo-frame">
+        <img src="assets/sindhu.jpg" alt="Sindhu">
+      </div>
+      <p class="photo-caption">Wishing you a year full of good things.</p>
+
+      <div class="divider"></div>
+
+      <p class="subtitle" style="max-width:560px;">
+        May this year bring you everything you deserve — happiness, success, and people who love you as much as I do.
+        Stay the same fun, caring, and slightly bossy Bestiee I know. Happy Birthday, Sindhu.
+      </p>
+    </div>
+
+    <div class="frame reveal" style="margin-top:60px;">
+      <p class="eyebrow">A Message For You</p>
+      <h1 class="title" style="font-size:clamp(1.6rem,5vw,2.2rem);">Watch This, Bestiee</h1>
+      <div class="divider"></div>
+
+      <div class="video-frame">
+        <video controls poster="assets/video-poster.jpg" id="wishVideo">
+          <source src="assets/birthday-wish.mp4" type="video/mp4">
+        </video>
+        <div class="video-missing" id="videoMissing" style="display:none;">
+          🎬 Your video will play here.<br>
+          Just add a file named <b>birthday-wish.mp4</b> inside the <b>assets</b> folder.
+        </div>
+      </div>
+    </div>
+
+    <footer class="reveal" style="margin-top:20px;">
+      <p class="footer-title">With love, always</p>
+      <p>Made by hand, just for you, Bestiee.</p>
+      <p class="note" style="margin-top:14px;">— your favourite person, hopefully 😄</p>
+      <p style="margin-top:16px;"><a href="index.html">Replay the surprise</a></p>
+    </footer>
+  </div>
+</div>
+
+<button id="soundToggle" title="Toggle music">♪</button>
+
+<script src="script.js"></script>
+<script>
+guardLockedPage();
+markProgress(4);
+startSparkles();
+startReveal();
+wireSoundToggle();
+startMusic();
+animateTitle('#bdayTitle');
+startRisers('★', 700);
+
+const video = document.getElementById('wishVideo');
+const missingNote = document.getElementById('videoMissing');
+video.addEventListener('error', ()=>{
+  video.style.display = 'none';
+  missingNote.style.display = 'block';
+});
+
+fireworksBurst(3);
+setTimeout(()=>fireworksBurst(2), 800);
+</script>
+</body>
+</html>

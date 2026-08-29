@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story — For Bestiee</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="sparkles"></canvas>
+<canvas id="fireworks"></canvas>
+<div class="glow-bg"></div>
+
+<div id="progressDots">
+  <span class="pdot"></span><span class="pdot"></span><span class="pdot"></span><span class="pdot"></span>
+</div>
+
+<div class="page">
+  <div class="wrap">
+
+    <div class="frame reveal">
+      <svg class="emblem" viewBox="0 0 100 100" style="width:44px;">
+        <circle cx="50" cy="50" r="42" fill="none" stroke="#d4af37" stroke-width="2.5"/>
+        <polygon points="50,22 58,44 82,44 62,58 70,80 50,66 30,80 38,58 18,44 42,44" fill="#d4af37"/>
+      </svg>
+      <p class="eyebrow">Our Story</p>
+      <h1 class="title" id="storyTitle">The Story of Us</h1>
+      <p class="subtitle">A few moments that mean a lot to me. Tap a star to read one.</p>
+
+      <svg id="constellation-svg" viewBox="0 0 680 300" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-top:30px;">
+        <line class="const-line" x1="70" y1="210" x2="240" y2="80"/>
+        <line class="const-line" x1="240" y1="80" x2="430" y2="170"/>
+        <line class="const-line" x1="430" y1="170" x2="610" y2="60"/>
+
+        <g class="const-star" data-key="s1" transform="translate(70,210)">
+          <circle class="halo" r="18"/><circle class="core" r="5"/>
+          <text class="const-label" x="0" y="38" text-anchor="middle">10th Grade</text>
+        </g>
+        <g class="const-star" data-key="s2" transform="translate(240,80)">
+          <circle class="halo" r="18"/><circle class="core" r="5"/>
+          <text class="const-label" x="0" y="-26" text-anchor="middle">The Quiet Years</text>
+        </g>
+        <g class="const-star" data-key="s3" transform="translate(430,170)">
+          <circle class="halo" r="20"/><circle class="core" r="6"/>
+          <text class="const-label" x="0" y="38" text-anchor="middle">18 Feb 2025</text>
+        </g>
+        <g class="const-star" data-key="s4" transform="translate(610,60)">
+          <circle class="halo" r="18"/><circle class="core" r="5"/>
+          <text class="const-label" x="0" y="-26" text-anchor="middle">Now</text>
+        </g>
+      </svg>
+
+      <div class="const-card" id="cardBox">
+        <span class="tag" id="cardTag"></span>
+        <span id="cardText"></span>
+      </div>
+    </div>
+
+    <div class="nav-next reveal">
+      <a href="letter.html" class="btn">Next: Read Your Letter</a>
+    </div>
+
+  </div>
+</div>
+
+<button id="soundToggle" title="Toggle music">♪</button>
+
+<script src="script.js"></script>
+<script>
+guardLockedPage();
+markProgress(2);
+startSparkles();
+startReveal();
+wireSoundToggle();
+startMusic();
+animateTitle('#storyTitle');
+
+const storyData = {
+  s1: { tag:"10th Grade", text:"We were classmates back then. Just two people sitting in the same class, with no idea what we would become to each other later." },
+  s2: { tag:"The Quiet Years", text:"After 10th, we drifted apart. No fight, no drama — just life taking us in different directions, and the conversations slowly stopping." },
+  s3: { tag:"18 February 2025", text:"Out of nowhere, we started talking again. And this time, it stuck. That one chat quietly turned into the friendship I have now." },
+  s4: { tag:"Now", text:"We talk almost every day, mostly online. It still feels close. You are one of my best friends, and I trust you a lot." }
+};
+const cardBox = document.getElementById('cardBox');
+const cardTag = document.getElementById('cardTag');
+const cardText = document.getElementById('cardText');
+document.querySelectorAll('.const-star').forEach(star=>{
+  star.addEventListener('click', ()=>{
+    const d = storyData[star.getAttribute('data-key')];
+    cardTag.textContent = d.tag;
+    cardText.textContent = d.text;
+    cardBox.classList.add('show');
+  });
+});
+</script>
+</body>
+</html>

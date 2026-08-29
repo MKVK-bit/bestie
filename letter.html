@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Letter For You — Bestiee</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="sparkles"></canvas>
+<canvas id="fireworks"></canvas>
+<div class="glow-bg"></div>
+
+<div id="progressDots">
+  <span class="pdot"></span><span class="pdot"></span><span class="pdot"></span><span class="pdot"></span>
+</div>
+
+<div class="page">
+  <div class="wrap">
+    <div class="frame reveal">
+      <p class="eyebrow">From Me To You</p>
+      <h1 class="title" id="letterTitle">A Letter For You</h1>
+      <p class="subtitle">Break the seal to read it, Bestiee.</p>
+
+      <div class="parchment">
+        <div class="wax-seal" id="waxSeal">S</div>
+
+        <!-- ============================================================ -->
+        <!-- EDIT BELOW: replace the placeholder lines with your own words -->
+        <!-- Open this file in any text editor, find the text between     -->
+        <!-- <p> tags inside #letterBody, and type your own letter.        -->
+        <!-- ============================================================ -->
+        <div id="letterBody">
+          <p>Dear Sindhu,</p>
+          <p> I am so lucky to have you as my best friend </p>
+          <p> you shared me many of your life memories which are priceless to me</p>
+          <p> we will definetly more memories like this, wish you many more happy returs of the day </p>
+          <span class="sign">— mkvk</span>
+		  </div>
+        <!-- ============================================================ -->
+        <!-- END OF EDIT AREA                                              -->
+        <!-- ============================================================ -->
+
+        <p class="letter-hint" id="hintText">tap the seal above</p>
+      </div>
+    </div>
+
+    <div class="nav-next reveal">
+      <a href="birthday.html" class="btn">Next: Open Your Wish</a>
+    </div>
+  </div>
+</div>
+
+<button id="soundToggle" title="Toggle music">♪</button>
+
+<script src="script.js"></script>
+<script>
+guardLockedPage();
+markProgress(3);
+startSparkles();
+startReveal();
+wireSoundToggle();
+startMusic();
+animateTitle('#letterTitle');
+
+const waxSeal = document.getElementById('waxSeal');
+const letterBody = document.getElementById('letterBody');
+const hintText = document.getElementById('hintText');
+waxSeal.addEventListener('click', ()=>{
+  waxSeal.classList.add('cracked');
+  letterBody.classList.add('open');
+  hintText.style.display = 'none';
+});
+</script>
+</body>
+</html>
